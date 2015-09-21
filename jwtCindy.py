@@ -3,7 +3,7 @@
 import jwt
 key = 'secret'
 
-payload = {'username':'cvo','password':'mypassword'}
+payload = {'username':'cvo5104','password':'mypassword'}
 token = jwt.encode(payload, key,'HS256')
 
 print token
