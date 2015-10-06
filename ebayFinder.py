@@ -5,7 +5,7 @@ def get_item():
 try:
     search_item  = get_item()
     api = Finding(appid="ScottRus-bf7d-437a-a830-3735324dd553",config_file=None,debug=True)
-    response = api.execute('findItemsAdvanced', {'keywords': 'iPhone'})
+    response = api.execute('findItemsAdvanced', {'keywords': search_item})
     print(response.dict())
     items = response.dict()
     tings = items['searchResult']
