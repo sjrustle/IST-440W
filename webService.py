@@ -15,7 +15,7 @@ class SoapService(SimpleWSGISoapApp):
     """Class for webservice """
     @soapmethod(soap_types.String, _returns=soap_types.String)
     def ebay_service(self,keyword):
-        ebayFinder.get_item()
+        return ebayFinder.itemFinder(keyword)
 
 class EbayServ(SoapService):
     """Class for web.py """
