@@ -1,6 +1,7 @@
 __author__ = 'Scott'
 import web
 import ebayFinder
+import SQLConnection
 from soaplib.wsgi_soap import SimpleWSGISoapApp
 from soaplib.service import soapmethod
 from soaplib.serializers import primitive as soap_types
@@ -17,6 +18,7 @@ class SoapService(SimpleWSGISoapApp):
     def ebay_service(self,keyword):
         return ebayFinder.itemFinder(keyword)
 
+##Methods here are for how web service communicates
 class EbayServ(SoapService):
     """Class for web.py """
     def start_response(self,status, headers):
@@ -28,11 +30,12 @@ class EbayServ(SoapService):
         response = super(SimpleWSGISoapApp, self).__call__(web.ctx.environ, self.start_response)
         return render("\n".join(response))
 
-
+    ##Primary method
     def POST(self):
         response = super(SimpleWSGISoapApp, self).__call__(web.ctx.environ, self.start_response)
         return render("\n".join(response))
 
+##potential front page the rest is backend API
 class Hello():
     def GET(self):
         return render
