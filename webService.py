@@ -15,10 +15,12 @@ render = web.template.Template("$def with (var)\n$:var")
 
 class SoapService(SimpleWSGISoapApp):
     """Class for webservice """
+    @soapmethod(soap_types.String)
+    def service_login(self,keyword):
+        authorized_user(keyword)
     @soapmethod(soap_types.String, _returns=soap_types.String)
     def ebay_service(self,keyword):
-        return authorized_user(keyword)
-        ##return ebayFinder.itemFinder(keyword)
+        return ebayFinder.itemFinder(keyword)
 
 ##Methods here are for how web service communicates
 class EbayServ(SoapService):
