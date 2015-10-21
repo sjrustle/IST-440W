@@ -3,7 +3,7 @@ from ebaysdk.finding import Connection as Finding
 import SQLConnection
 def itemFinder(search_item):
     try:
-        api = Finding(appid="",config_file=None,debug=True)
+        api = Finding(appid="ScottRus-bf7d-437a-a830-3735324dd553",config_file=None,debug=True)
         response = api.execute('findItemsAdvanced', {'keywords': search_item})
         items = response.dict()
         SQLConnection.get_Ebay_data(items['searchResult'])

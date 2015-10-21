@@ -1,13 +1,15 @@
 __author__ = 'Scott'
-import mysql
-from mysql.connector import errorcode
+import MySQLdb
+
+##Error code add to module 
+##from mysql.connector import errorcode
 
 def get_Ebay_data(info):
 
         try:
             ##Make SQL connection
-            cnx = mysql.connector.connect(user = 'root',password = '',
-                                          database = 'EBAY')
+            cnx = MySQLdb.connect(host = "localhost", user = "root", passwd = "Team5", db = "testDB")
+      
             ##
             cursor = cnx.cursor()
             cursor.execute("DROP TABLE IF EXISTS Ebay")
@@ -24,13 +26,13 @@ def get_Ebay_data(info):
                             continue
                         ##cursor.execute("INSERT INTO Ebay (ItemId,TITLE,ValuePrice,ProductId) VALUES ({},{},{},{})".format(value['itemId'],value['title'],100,100))
 
-        except mysql.connector.Error as err:
-            if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-                print("Something is wrong with your user name or password")
-            elif err.errno == errorcode.ER_BAD_DB_ERROR:
-                print("Database does not exist")
-            else:
-                print(err)
+        except:  ##mysql.connector.Error as err:
+            ##if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+              ##  print("Something is wrong with your user name or password")
+            ##elif err.errno == errorcode.ER_BAD_DB_ERROR:
+              ##  print("Database does not exist")
+            ##else:
+                print("An error occured")
         else:
             cnx.close()
 
