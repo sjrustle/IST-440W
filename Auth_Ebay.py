@@ -5,3 +5,5 @@ def authorized_user():
     if subprocess.call(["kinit"]):
         return "That worked"
 
+authorized_user()
+
