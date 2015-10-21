@@ -2,7 +2,7 @@ __author__ = 'Scott'
 import subprocess
 
 def authorized_user():
-    if subprocess.call(["kinit"]):
+    if subprocess.call(["kinit"]) == 0:
         print "That worked"
     print "The Function Ran"
 
