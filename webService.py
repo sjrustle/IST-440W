@@ -18,6 +18,7 @@ class SoapService(SimpleWSGISoapApp):
     @soapmethod(soap_types.String, _returns=soap_types.String)
     def ebay_service(self,keyword):
         return authorized_user(keyword)
+        ##return ebayFinder.itemFinder(keyword)
 
 ##Methods here are for how web service communicates
 class EbayServ(SoapService):

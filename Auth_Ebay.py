@@ -10,6 +10,5 @@ def authorized_user(keyword):
         print "Fail"
     ##print "The Function Ran"
 
-authorized_user()
 ##THIS IS A CHECK, SOmething
 
