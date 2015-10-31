@@ -1,6 +1,7 @@
 __author__ = 'Scott'
 
-import logging
+import loggin
+import datetimeg
 import web
 import ebayFinder
 from Kerb_Auth_Check import auth_kinit,does_ticket_exist
@@ -22,7 +23,7 @@ class SoapService(SimpleWSGISoapApp):
     ##Login method
     @soapmethod(soap_types.String, soap_types.String, _returns=soap_types.Boolean)
     def service_login(self,username, password):
-        logging.info("Login attempted") ## add date
+        logging.info("Login attempted {}",datetime.time) ## add date
         if auth_kinit(username, password) == True:
             return
         return
