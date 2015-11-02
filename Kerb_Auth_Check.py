@@ -8,6 +8,7 @@ def auth_kinit (username, password):
 	return does_ticket_exist(username)
 
 def does_ticket_exist(username):
+    Popen(['cd','/'])
     a = Popen(['grep', username, "/tmp"]).communicate()
     if a > 0:
         return True
