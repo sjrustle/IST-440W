@@ -8,7 +8,7 @@ def auth_kinit (username, password):
 	return does_ticket_exist(username)
 
 def does_ticket_exist(username):
-    Popen(['cd','/'])
+    ## This will have to be update to the relative path, no way currently of seeing tmp
     a = Popen(['grep', username, "/tmp"]).communicate()
     if a > 0:
         return True
