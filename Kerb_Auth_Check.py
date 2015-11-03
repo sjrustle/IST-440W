@@ -17,6 +17,3 @@ def does_ticket_exist(username):
 
 
 
-#print does_ticket_exist()
-
-
