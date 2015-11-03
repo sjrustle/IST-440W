@@ -7,7 +7,7 @@ from Kerb_Auth_Check import auth_kinit
 import logging
 import web
 ##import SQLConnection
-import wsLogging
+from wsLogging import Log
 
 #WebPy imports
 from soaplib.wsgi_soap import SimpleWSGISoapApp
@@ -30,9 +30,9 @@ class SoapService(SimpleWSGISoapApp):
         def service_login(self,username, password):
            # logging.info("Login attempted {}",datetime.datetime.now())
             if auth_kinit(username, password) == True:
-               # logging.info("Successful Login {}",datetime.datetime.now())
+                logging.info("Successful Login {}",datetime.datetime.now())
             else:
-             #   logging.info("Login Failed {}",datetime.time.now())
+                logging.info("Login Failed {}",datetime.time.now())
                 return False
     except TypeError:
         logging.error("There was a type error")
@@ -68,4 +68,4 @@ app=web.application(urls, globals())
 
 if __name__ == "__main__":
     app.run()
-    wsLogging.run()
+    wsLogging.run(Log)

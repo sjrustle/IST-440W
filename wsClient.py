@@ -7,7 +7,8 @@ from webService import EbayServ
 try:
     client = make_service_client('http://localhost:8080/ebay',EbayServ())
 except:
-    #Try to connect again.
+    #Print statment for now, but will change in last version
+    print "Client failed"
 
 try:
     user_name = str(raw_input("> Enter user: "))
@@ -20,4 +21,5 @@ try:
         print("Login Fail, try again.")
 ## exceptions here will log back to the server
 except TypeError as e:
-    client.
+    #Ask Joe how to handle logs from the client
+    print e

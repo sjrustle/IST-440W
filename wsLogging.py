@@ -4,6 +4,7 @@ import sys, logging
 from wsgilog import WsgiLog
 import config
 
+#Log class, logs all HTTP requests this includes POSTS/GETS
 class Log(WsgiLog):
     def __init__(self, application):
         WsgiLog.__init__(
