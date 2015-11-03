@@ -13,6 +13,7 @@ class Log(WsgiLog):
             logformat = '%(message)s',
             tofile = True,
             toprint = True,
+            #Configure the log_file, with the config module
             file = config.log_file,
             interval = config.log_interval,
             backups = config.log_backups
