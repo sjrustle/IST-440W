@@ -6,15 +6,14 @@ import ebayFinder
 from Kerb_Auth_Check import auth_kinit
 import logging
 import web
+from wsLogging import start_logging
 ##import SQLConnection
-from wsLogging import Log
 
 #WebPy imports
 from soaplib.wsgi_soap import SimpleWSGISoapApp
 from soaplib.service import soapmethod
 from soaplib.serializers import primitive as soap_types
 
-logging.basicConfig(filename="service.log", level="DEBUG")
 
 urls = ("/ebay", "EbayServ",
         "/ebay.wsdl", "EbayServ",
@@ -30,14 +29,14 @@ class SoapService(SimpleWSGISoapApp):
         def service_login(self,username, password):
            # logging.info("Login attempted {}",datetime.datetime.now())
             if auth_kinit(username, password) == True:
-                logging.info("Successful Login {}",datetime.datetime.now())
+                start_logging("webService")
             else:
-                logging.info("Login Failed {}",datetime.time.now())
+                start_logging("webService")
                 return False
     except TypeError:
-        logging.error("There was a type error")
+        start_logging("webService")
     except:
-        logging.error("Some other error occurred")
+        start_logging("webService")
 
 
     #if does_ticket_exist() == True:
@@ -68,4 +67,5 @@ app=web.application(urls, globals())
 
 if __name__ == "__main__":
     app.run()
-    wsLogging.run(Log)
+    start_logging("webService")
+
