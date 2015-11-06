@@ -6,7 +6,7 @@ import ebayFinder
 from Kerb_Auth_Check import auth_kinit
 import logging
 import web
-from wsLogging import start_logging
+from wsLogging import error_logging, audit_logging
 ##import SQLConnection
 
 #WebPy imports
@@ -29,14 +29,14 @@ class SoapService(SimpleWSGISoapApp):
         def service_login(self,username, password):
            # logging.info("Login attempted {}",datetime.datetime.now())
             if auth_kinit(username, password) == True:
-                start_logging("webService")
+                audit_logging("webService", "Login successful")
             else:
-                start_logging("webService")
+                audit_logging("webService", "Login Failed")
                 return False
-    except TypeError:
-        start_logging("webService")
+    except TypeError, e:
+        error_logging("webService", e)
     except:
-        start_logging("webService")
+        error_logging("webService", "Failed")
 
 
     #if does_ticket_exist() == True:
