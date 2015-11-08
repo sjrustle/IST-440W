@@ -35,8 +35,10 @@ def does_ticket_exist(username):
                         a = True
                     else:
                         continue
+    except IOError, e:
+        error_logging("Kerb_Auth_Check", e)
     except Exception, e:
-        print e
+        error_logging("Kerb_Auth_Check", e)
     return a
 
 
