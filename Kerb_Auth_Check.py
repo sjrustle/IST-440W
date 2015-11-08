@@ -12,7 +12,7 @@ def auth_kinit (username, password):
 
 def does_ticket_exist(username):
     # Sets the path
-    path = 'tmp'
+    path = '/tmp'
     a = False
 
     try:
