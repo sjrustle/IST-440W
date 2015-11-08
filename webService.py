@@ -23,16 +23,22 @@ render = web.template.Template("$def with (var)\n$:var")
 ##Processing and login is in the class
 class SoapService(SimpleWSGISoapApp):
     """Class for webservice """
+
     ##Login method
     try:
         @soapmethod(soap_types.String, soap_types.String, _returns=soap_types.Boolean)
         def service_login(self,username, password):
-           # logging.info("Login attempted {}",datetime.datetime.now())
+
             if auth_kinit(username, password) == True:
                 audit_logging("webService", "Login successful")
+                #Send Json token with permissions
+
             else:
                 audit_logging("webService", "Login Failed")
+                #Send message with failure
+
                 return False
+
     except TypeError, e:
         error_logging("webService", e)
     except:
@@ -67,5 +73,5 @@ app=web.application(urls, globals())
 
 if __name__ == "__main__":
     app.run()
-    start_logging("webService")
+
 

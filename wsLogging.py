@@ -6,7 +6,7 @@ def logger_create(mod_name):
     logger = logging.getLogger(mod_name)
 
     # Logging file handler
-    fh = logging.FileHandler(mod_name)
+    fh = logging.FileHandler("Service.log")
 
     # Format create/Format set
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
