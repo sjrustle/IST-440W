@@ -9,6 +9,6 @@ def create_connection():
 
 def get_user(connection, user_name):
     cur = create_connection()
-    cur.execute("SELECT * FROM user WHERE username = %s", user_name)
-    user_name =  cur.fetchall()
-    return user_name
+    cur.execute("SELECT user_service FROM user WHERE username = %s", user_name)
+    user_service =  cur.fetchall()
+    return user_service
