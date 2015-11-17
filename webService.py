@@ -1,9 +1,10 @@
 __author__ = 'Scott'
 
 #Team/Group imports
-import datetime
+
 import ebayFinder
 from Kerb_Auth_Check import auth_kinit
+from Create_Token import return_jwt
 import logging
 import web
 from wsLogging import error_logging, audit_logging
@@ -26,18 +27,18 @@ class SoapService(SimpleWSGISoapApp):
 
     ##Login method
     try:
-        @soapmethod(soap_types.String, soap_types.String, _returns=soap_types.Boolean)
+        @soapmethod(soap_types.String, soap_types.String, _returns=soap_types.String)
         def service_login(self,username, password):
 
             if auth_kinit(username, password) == True:
                 audit_logging("webService", "Login successful")
                 #Send Json token with permissions
+                return return_jwt(username)
 
             else:
                 audit_logging("webService", "Login Failed")
                 #Send message with failure
-
-                return False
+                return "Failed to connect to service"
 
     except TypeError, e:
         error_logging("webService", e)
