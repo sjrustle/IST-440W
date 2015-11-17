@@ -4,6 +4,8 @@ import jwt
 # Returns JWT string
 def return_jwt(username):
     con = create_connection()
-    service = get_user(con, username)
-    encoded = jwt.encode({'user_service': service},'secret', algorithm='HS256')
+    user_service_array = get_user(con, username)
+    user_service_tuple = user_service_array[0]
+    service_unpacked = user_service_tuple[0]
+    encoded = jwt.encode({'user_service': service_unpacked},'secret', algorithm='HS256')
     return encoded
