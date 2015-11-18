@@ -31,8 +31,8 @@ def does_ticket_exist(username):
                 # Search for username
                 for line in hand:
                     if re.search(username,line):
-                        break
                         a = True
+                        break
                     else:
                         continue
     except IOError, e:
@@ -40,5 +40,10 @@ def does_ticket_exist(username):
     except Exception, e:
         error_logging("Kerb_Auth_Check", e)
     return a
+
+
+a = does_ticket_exist("bkt5031")
+
+print a
 
 
