@@ -15,6 +15,8 @@ try:
     decode = jwt.decode(json,'secret', algorithm='HS256')
     print decode
     print type(decode)
+    service_type = decode.get('user_service')
+    print service_type
     # Get message from rabbitmq
     # if decode.value(0) == 1:
     #     # Has permissions for ebay, will do the ebay call here
