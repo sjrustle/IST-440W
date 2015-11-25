@@ -13,7 +13,7 @@ try:
 
     # Json sent back, with permissions decode
     decode = jwt.decode(json,'secret', algorithm='HS256')
-
+    print decode
     # Get message from rabbitmq
     # if decode.value(0) == 1:
     #     # Has permissions for ebay, will do the ebay call here
