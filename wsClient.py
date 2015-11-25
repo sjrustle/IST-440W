@@ -15,12 +15,12 @@ try:
     decode = jwt.decode(json,'secret', algorithm='HS256')
 
     # Get message from rabbitmq
-    if decode.value(0) == 1:
-        # Has permissions for ebay, will do the ebay call here
-        print "User has permission"
-    else:
-        # User does not have permission
-        print "User does not have permission"
+    # if decode.value(0) == 1:
+    #     # Has permissions for ebay, will do the ebay call here
+    #     print "User has permission"
+    # else:
+    #     # User does not have permission
+    #     print "User does not have permission"
 
 except:
     print "Login Failed"
