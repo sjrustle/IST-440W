@@ -8,3 +8,4 @@ class JsonTokenUnitTest(unittest):
         self.assertEqual(con,)
 
     def json_ticket_return_test(self):
+        jwt = Create_Token.return_jwt()
