@@ -8,6 +8,7 @@ from Create_Token import return_jwt
 import logging
 import web
 from wsLogging import error_logging, audit_logging
+import ConEng
 ##import SQLConnection
 
 #WebPy imports
@@ -39,6 +40,9 @@ class SoapService(SimpleWSGISoapApp):
                 audit_logging("webService", "Login Failed")
                 #Send message with failure
                 return "Failed to connect to service"
+
+        def prediction_service(self,item):
+            ConEng.itemFinder(item)
 
     except TypeError, e:
         error_logging("webService", e)
