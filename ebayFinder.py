@@ -1,6 +1,6 @@
 __author__ = 'Scott'
 from ebaysdk.finding import Connection as Finding
-import SQLConnection
+# import SQLConnection
 import scipy
 def itemFinder(search_item):
     #try:
@@ -13,7 +13,7 @@ def itemFinder(search_item):
         print line
 
 
-        SQLConnection.get_Ebay_data(items['searchResult'])
+        #SQLConnection.get_Ebay_data(items['searchResult'])
 
         #EbayDbSQL.set_ebay_dict(items['searchResult'])
         #item in tings['item']:

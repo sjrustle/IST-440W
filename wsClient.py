@@ -17,6 +17,7 @@ try:
     print type(decode)
     service_type = decode.get('user_service')
     print service_type
+    client.
     # Get message from rabbitmq
     # if decode.value(0) == 1:
     #     # Has permissions for ebay, will do the ebay call here
