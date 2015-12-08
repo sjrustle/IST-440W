@@ -17,7 +17,7 @@ def itemFinder(search_item):
     items = []
     try:
         api = Finding(appid="ScottRus-bf7d-437a-a830-3735324dd553",config_file=None,debug=True)
-        for page_num in range(30):
+        for page_num in range(5):
             # TODO: Change back to range later
             response = api.execute('findCompletedItems', {'keywords': search_item,'paginationInput': {'entriesPerPage': 100, 'pageNumber':page_num}})
             response_dict = response.dict()
@@ -104,6 +104,7 @@ def runtest (search_item):
     return ("The new b{0}, the new m {1}, the error {2}".format(new_b,new_m,error))
 
 
-# itemFinder("iPhone")
+a = runtest("iPad Pro")
+print a
 # print len(price_array)
 # print len(date_array)

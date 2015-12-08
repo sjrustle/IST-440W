@@ -9,7 +9,7 @@ try:
     client = make_service_client('http://localhost:8080/ebay',EbayServ())
 
     # Try to connect to client and get json token
-    json = client.service_login("bkt5031", "H464Jd$")
+    json = client.service_login("bkt5031", "H464Jd$", "PlayStation")
     print json
     # Json sent back, with permissions decode
     decode = jwt.decode(json,'secret', algorithm='HS256')
