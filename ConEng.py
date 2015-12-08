@@ -66,6 +66,6 @@ def itemFinder(search_item):
     return items
 
 
-itemFinder("iPhone")
-print len(price_array)
-print len(date_array)
+# itemFinder("iPhone")
+# print len(price_array)
+# print len(date_array)
