@@ -40,15 +40,10 @@ class SoapService(SimpleWSGISoapApp):
                 audit_logging("webService", "Login Failed")
                 #Send message with failure
                 return "Failed to connect to service"
-
-        def prediction_service(self,item):
-            ConEng.itemFinder(item)
-
     except TypeError, e:
         error_logging("webService", e)
     except:
         error_logging("webService", "Failed")
-
 
     #if does_ticket_exist() == True:
     # @soapmethod(soap_types.String, _returns=soap_types.String)
