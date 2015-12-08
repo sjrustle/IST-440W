@@ -63,6 +63,7 @@ def itemFinder(search_item):
                 date_array.append(int_delta)
         except:
             error_logging("ConEng", "Failed")
+    return items
 
 
 itemFinder("iPhone")
