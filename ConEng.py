@@ -103,9 +103,6 @@ def runtest (search_item):
         error = compute_error_for_line_give_points(new_b,new_m,point_array)
     return ("The new b{0}, the new m {1}, the error {2}".format(new_b,new_m,error))
 
-runtest("Xbox One")
-
-
 
 # itemFinder("iPhone")
 # print len(price_array)

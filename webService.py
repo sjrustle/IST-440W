@@ -28,13 +28,16 @@ class SoapService(SimpleWSGISoapApp):
 
     ##Login method
     try:
-        @soapmethod(soap_types.String, soap_types.String, _returns=soap_types.String)
-        def service_login(self,username, password):
+        # TODO: Currenly making one call should be multiple calls, meaning that username,passwrod, and search is sent here
+        @soapmethod(soap_types.String, soap_types.String, soap_types.String, _returns=soap_types.String)
+        def service_login(self,username, password,search):
 
             if auth_kinit(username, password) == True:
                 audit_logging("webService", "Login successful")
                 #Send Json token with permissions
-                return return_jwt(username)
+                if return_jwt(username) == 1:
+                    # TODO:RabbitMQ Goes here
+                    return ConEng.runtest(search)
 
             else:
                 audit_logging("webService", "Login Failed")

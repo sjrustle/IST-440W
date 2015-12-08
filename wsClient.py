@@ -10,7 +10,7 @@ try:
 
     # Try to connect to client and get json token
     json = client.service_login("bkt5031", "H464Jd$")
-
+    print json
     # Json sent back, with permissions decode
     decode = jwt.decode(json,'secret', algorithm='HS256')
     print decode
