@@ -39,7 +39,7 @@ class SoapService(SimpleWSGISoapApp):
                 if service_type == 1:
                     # TODO:RabbitMQ Goes here
                     #return ConEng.runtest(search)
-                    print "Returned a 1"
+                    return "Returned a 1"
 
             else:
                 audit_logging("webService", "Login Failed")
