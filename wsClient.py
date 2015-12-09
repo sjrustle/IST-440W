@@ -18,7 +18,7 @@ try:
     service_type = decode.get('user_service')
     print service_type
 
-    if decode.value(0) == 1:
+    if decode.value[0] == 1:
         # Has permissions for ebay, will do the ebay call here
         print "User has permissions"
     else:
