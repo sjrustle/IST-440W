@@ -35,12 +35,7 @@ class SoapService(SimpleWSGISoapApp):
             if auth_kinit(username, password) == True:
                 audit_logging("webService", "Login successful")
                 #Send Json token with permissions
-                service_type = return_jwt(username)
-                if service_type == 1:
-                    #return ConEng.runtest(search)
-                    return "Returned a 1"
-                else:
-                    return "We didn't return anything"
+                return return_jwt(username)
             else:
                 audit_logging("webService", "Login Failed")
                 #Send message with failure
