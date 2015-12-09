@@ -21,6 +21,7 @@ try:
     if service_type == 1:
         # Has permissions for ebay, will do the ebay call here
         print "User has permissions"
+        result = client.prediction("XboxOne")
     else:
          # User does not have permission
          print "User does not have permission"

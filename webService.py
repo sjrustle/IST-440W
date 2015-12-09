@@ -45,6 +45,16 @@ class SoapService(SimpleWSGISoapApp):
     except:
         error_logging("webService", "Failed")
 
+    # Prediction Method
+    try:
+        @soapmethod(soap_types.String,_returns=soap_types.String)
+        def prediction(self,search_request):
+            return ConEng.runtest(search_request)
+    except TypeError, e:
+        error_logging("webService", e)
+    except:
+        error_logging("webService", "Failed")
+
     #if does_ticket_exist() == True:
     # @soapmethod(soap_types.String, _returns=soap_types.String)
     # def ebay_service(self,keyword):
