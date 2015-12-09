@@ -37,10 +37,10 @@ class SoapService(SimpleWSGISoapApp):
                 #Send Json token with permissions
                 service_type = return_jwt(username)
                 if service_type == 1:
-                    # TODO:RabbitMQ Goes here
                     #return ConEng.runtest(search)
                     return "Returned a 1"
-
+                else:
+                    return "We didn't return anything"
             else:
                 audit_logging("webService", "Login Failed")
                 #Send message with failure
