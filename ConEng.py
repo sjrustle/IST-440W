@@ -101,10 +101,8 @@ def runtest (search_item):
     for i in range(100):
         new_b, new_m = step_gradient(b,m,point_array,.1)
         error = compute_error_for_line_give_points(new_b,new_m,point_array)
-    return ("The new b {0}, the new m {1}, the error {2} this is for {4}".format(new_b,new_m,error,search_item))
+    return ("The new b {0}, the new m {1}, the error {2} this is for {3}".format(new_b,new_m,error,search_item))
 
 
-a = runtest("iPad Pro")
-print a
 # print len(price_array)
 # print len(date_array)
