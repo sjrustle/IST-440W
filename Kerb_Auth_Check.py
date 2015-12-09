@@ -44,6 +44,4 @@ def does_ticket_exist(username):
 
 a = does_ticket_exist("bkt5031")
 
-print a
-
 

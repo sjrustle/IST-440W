@@ -25,5 +25,4 @@ def itemFinder(search_item):
 
 
 
-itemFinder("iPhone")
 
