@@ -35,9 +35,11 @@ class SoapService(SimpleWSGISoapApp):
             if auth_kinit(username, password) == True:
                 audit_logging("webService", "Login successful")
                 #Send Json token with permissions
-                if return_jwt(username) == 1:
+                service_type = return_jwt(username)
+                if service_type == 1:
                     # TODO:RabbitMQ Goes here
-                    return ConEng.runtest(search)
+                    #return ConEng.runtest(search)
+                    print "Returned a 1"
 
             else:
                 audit_logging("webService", "Login Failed")
