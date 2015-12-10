@@ -97,7 +97,7 @@ def step_gradient(b_current, m_current, points, learningRate):
         error_logging("webService", "Error in computer error")
 
 
-def runtest (search_item,search_intensity):
+def runtest (search_item,search_intensity,what_day):
     try:
 
         #std_div_price = numpy.std(price_array)
@@ -113,9 +113,11 @@ def runtest (search_item,search_intensity):
             error = compute_error_for_line_give_points(new_b,new_m,point_array)
         mean_of_item = numpy.mean(price_array)
         std_div_price = numpy.std(price_array)
+        predict_value = new_m(what_day) + new_b
         client_message = ("The new b {0}, the new m {1}, the error {2} this is for {3}\n"
                 "The mean of the {3} is {5}\n"
-                "Standard Deviations for {3} is {4} for the price".format(new_b,new_m,error,search_item,std_div_price,mean_of_item))
+                "Standard Deviations for {3} is {4} for the price\n"
+                          "The price of your value on {5} day is estimated to be {6}".format(new_b,new_m,error,search_item,std_div_price,mean_of_item,what_day,predict_value))
 
         # Sends to RabitMQ, incase client loses connection or long process
         rabbit_send.send_to(client_message)
