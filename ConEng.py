@@ -118,7 +118,7 @@ def runtest (search_item,search_intensity,what_day):
         client_message = ("The new b {0}, the new m {1}, the error {2} this is for {3}\n"
                 "The mean of the {3} is {5}\n"
                 "Standard Deviations for {3} is {4} for the price\n"
-                "The price of your value on {6} day is estimated to be {5}".format(new_b,new_m,error,search_item,std_div_price,mean_of_item,what_day,predict_value))
+                "The price of your value on {6} day is estimated to be ".format(new_b, new_m,error, search_item, std_div_price, mean_of_item, what_day, predict_value)+ str(predict_value))
 
         # Sends to RabitMQ, incase client loses connection or long process
         #rabbit_send.send_to(client_message)
