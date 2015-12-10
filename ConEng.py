@@ -6,7 +6,7 @@ from scipy import stats
 import numpy
 import pylab
 import math
-import rabbit_send
+#import rabbit_send
 
 # Global variables
 price_array = []
@@ -102,7 +102,7 @@ def runtest (search_item,search_intensity,what_day):
 
         #std_div_price = numpy.std(price_array)
         #std_div_date = stats.stats.tstd(date_array)
-
+        day = int(what_day)
         error = None
         new_b, new_m = None, None
         itemFinder(search_item,search_intensity)
@@ -113,18 +113,22 @@ def runtest (search_item,search_intensity,what_day):
             error = compute_error_for_line_give_points(new_b,new_m,point_array)
         mean_of_item = numpy.mean(price_array)
         std_div_price = numpy.std(price_array)
-        predict_value = new_m(what_day) + new_b
+        predict_value = ((new_m*(day)) + new_b)
+        print predict_value
         client_message = ("The new b {0}, the new m {1}, the error {2} this is for {3}\n"
                 "The mean of the {3} is {5}\n"
                 "Standard Deviations for {3} is {4} for the price\n"
-                          "The price of your value on {5} day is estimated to be {6}".format(new_b,new_m,error,search_item,std_div_price,mean_of_item,what_day,predict_value))
+                "The price of your value on {6} day is estimated to be {5}".format(new_b,new_m,error,search_item,std_div_price,mean_of_item,what_day,predict_value))
 
         # Sends to RabitMQ, incase client loses connection or long process
-        rabbit_send.send_to(client_message)
+        #rabbit_send.send_to(client_message)
 
         return client_message
     except:
         error_logging("ConEngine", "Error in runtest")
+
+a = runtest("iPhone",20,150)
+print a
 
 # print len(price_array)
 # print len(date_array)
