@@ -47,9 +47,9 @@ class SoapService(SimpleWSGISoapApp):
 
     # Prediction Method
     try:
-        @soapmethod(soap_types.String,soap_types.Integer,_returns=soap_types.String)
-        def prediction(self,search_request,search_intensity):
-            return ConEng.runtest(search_request,search_intensity)
+        @soapmethod(soap_types.String,soap_types.Integer,soap_types.String,_returns=soap_types.String)
+        def prediction(self,search_request,search_intensity,predictor_day):
+            return ConEng.runtest(search_request,search_intensity,predictor_day)
     except TypeError, e:
         error_logging("webService", e)
     except:
