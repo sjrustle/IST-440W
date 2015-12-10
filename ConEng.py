@@ -95,7 +95,7 @@ def step_gradient(b_current, m_current, points, learningRate):
 
 def runtest (search_item):
     try:
-        std_div_price = stats.stats.tstd(price_array)
+        std_div_price = numpy.std(price_array)
         std_div_date = stats.stats.tstd(date_array)
 
         error = None
