@@ -108,9 +108,11 @@ def runtest (search_item):
         for i in range(100):
             new_b, new_m = step_gradient(b,m,point_array,1)
             error = compute_error_for_line_give_points(new_b,new_m,point_array)
+        mean_of_item = numpy.mean(price_array)
         std_div_price = numpy.std(price_array)
         return ("The new b {0}, the new m {1}, the error {2} this is for {3}\n"
-                "Standard Deviations for {3} is {4} for the price".format(new_b,new_m,error,search_item,std_div_price))
+                "The mean of the {3} is {5}\n"
+                "Standard Deviations for {3} is {4} for the price".format(new_b,new_m,error,search_item,std_div_price,mean_of_item))
     except:
         error_logging("ConEngine", "Error in runtest")
 
