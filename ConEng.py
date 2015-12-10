@@ -93,23 +93,28 @@ def step_gradient(b_current, m_current, points, learningRate):
     except:
         error_logging("webService", "Error in computer error")
 
+
 def runtest (search_item):
     try:
-        std_div_price = numpy.std(price_array)
-        std_div_date = stats.stats.tstd(date_array)
+
+        #std_div_price = numpy.std(price_array)
+        #std_div_date = stats.stats.tstd(date_array)
 
         error = None
         new_b, new_m = None, None
         itemFinder(search_item)
         (m,b) = pylab.polyfit(date_array,price_array,1)
+        # Iterations for Step Gradient
         for i in range(100):
             new_b, new_m = step_gradient(b,m,point_array,1)
             error = compute_error_for_line_give_points(new_b,new_m,point_array)
+        std_div_price = numpy.std(price_array)
         return ("The new b {0}, the new m {1}, the error {2} this is for {3}\n"
                 "Standard Deviations for {3} is {4} for the price".format(new_b,new_m,error,search_item,std_div_price))
     except:
         error_logging("ConEngine", "Error in runtest")
 
 
+runtest("iPhone 6S")
 # print len(price_array)
 # print len(date_array)
