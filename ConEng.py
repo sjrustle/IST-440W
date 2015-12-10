@@ -15,11 +15,12 @@ point_array = []
 
 
 # Get and parses ebay items
-def itemFinder(search_item,seach_intensity):
+def itemFinder(search_item,inten):
     items = []
+    intens = int(inten)
     try:
         api = Finding(appid="ScottRus-bf7d-437a-a830-3735324dd553",config_file=None,debug=True)
-        for page_num in range(seach_intensity):
+        for page_num in range(intens):
             # TODO: Change back to range later
             response = api.execute('findCompletedItems', {'keywords': search_item,'paginationInput': {'entriesPerPage': 100, 'pageNumber':page_num}})
             response_dict = response.dict()

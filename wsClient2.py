@@ -11,7 +11,7 @@ try:
     name = raw_input("Enter username: ")
     password = raw_input("Enter password: ")
     search = raw_input("What do you want to find ?")
-    intensity = raw_input("How many pages would you like ot search")
+    intensity = int(raw_input("How many pages would you like ot search"))
 
     # Try to connect to client and get json token
     json = client.service_login(name, "H464Jd$",search)
