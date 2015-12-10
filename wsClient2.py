@@ -11,6 +11,7 @@ try:
     name = raw_input("Enter username: ")
     password = raw_input("Enter password: ")
     search = raw_input("What do you want to find ?")
+    intensity = raw_input("How many pages would you like ot search")
 
     # Try to connect to client and get json token
     json = client.service_login(name, "H464Jd$",search)
@@ -25,7 +26,7 @@ try:
     if service_type == 1:
         # Has permissions for ebay, will do the ebay call here
         print "User has permissions"
-        result = client.prediction(search)
+        result = client.prediction(search,intensity)
         print result
         try:
             rabbit_receive.callback('FirstQ')

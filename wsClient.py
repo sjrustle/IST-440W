@@ -24,7 +24,7 @@ try:
         print "User has permissions"
         result = client.prediction("Xbox One")
         print result
-        rabbit_receive.callback('FirstQ')
+        rabbit_receive.callback('FirstQ',)
     else:
          # User does not have permission
          print "User does not have permission"
