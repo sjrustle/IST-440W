@@ -15,11 +15,11 @@ point_array = []
 
 
 # Get and parses ebay items
-def itemFinder(search_item):
+def itemFinder(search_item,seach_intensity):
     items = []
     try:
         api = Finding(appid="ScottRus-bf7d-437a-a830-3735324dd553",config_file=None,debug=True)
-        for page_num in range(5):
+        for page_num in range(seach_intensity):
             # TODO: Change back to range later
             response = api.execute('findCompletedItems', {'keywords': search_item,'paginationInput': {'entriesPerPage': 100, 'pageNumber':page_num}})
             response_dict = response.dict()
@@ -96,7 +96,7 @@ def step_gradient(b_current, m_current, points, learningRate):
         error_logging("webService", "Error in computer error")
 
 
-def runtest (search_item):
+def runtest (search_item,search_intensity):
     try:
 
         #std_div_price = numpy.std(price_array)
@@ -104,7 +104,7 @@ def runtest (search_item):
 
         error = None
         new_b, new_m = None, None
-        itemFinder(search_item)
+        itemFinder(search_item,search_intensity)
         (m,b) = pylab.polyfit(date_array,price_array,1)
         # Iterations for Step Gradient
         for i in range(100):
