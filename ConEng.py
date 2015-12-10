@@ -127,8 +127,6 @@ def runtest (search_item,search_intensity,what_day):
     except:
         error_logging("ConEngine", "Error in runtest")
 
-a = runtest("iPhone",20,150)
-print a
 
 # print len(price_array)
 # print len(date_array)
