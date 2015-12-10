@@ -76,7 +76,7 @@ def compute_error_for_line_give_points(b,m,points):
             totalError += (y - (m * x + b)) ** 2
         return totalError/float(len(points))
     except:
-        error_logging("webService", "Error in computer error")
+        error_logging("ConEngine", "Error in computer error")
 
 def step_gradient(b_current, m_current, points, learningRate):
     try:
@@ -94,14 +94,21 @@ def step_gradient(b_current, m_current, points, learningRate):
         error_logging("webService", "Error in computer error")
 
 def runtest (search_item):
-    error = None
-    new_b, new_m = None, None
-    itemFinder(search_item)
-    (m,b) = pylab.polyfit(date_array,price_array,1)
-    for i in range(100):
-        new_b, new_m = step_gradient(b,m,point_array,.1)
-        error = compute_error_for_line_give_points(new_b,new_m,point_array)
-    return ("The new b {0}, the new m {1}, the error {2} this is for {3}".format(new_b,new_m,error,search_item))
+    try:
+        std_div_price = stats.stats.tstd(price_array)
+        std_div_date = stats.stats.tstd(date_array)
+
+        error = None
+        new_b, new_m = None, None
+        itemFinder(search_item)
+        (m,b) = pylab.polyfit(date_array,price_array,1)
+        for i in range(100):
+            new_b, new_m = step_gradient(b,m,point_array,1)
+            error = compute_error_for_line_give_points(new_b,new_m,point_array)
+        return ("The new b {0}, the new m {1}, the error {2} this is for {3}\n"
+                "Standard Deviations for {3} is {4} for the price".format(new_b,new_m,error,search_item,std_div_price))
+    except:
+        error_logging("ConEngine", "Error in runtest")
 
 
 # print len(price_array)
