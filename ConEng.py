@@ -6,13 +6,15 @@ from scipy import stats
 import numpy
 import pylab
 import math
+import rabbit_send
 
+# Global variables
 price_array = []
 date_array = []
 point_array = []
 
 
-
+# Get and parses ebay items
 def itemFinder(search_item):
     items = []
     try:
@@ -110,9 +112,14 @@ def runtest (search_item):
             error = compute_error_for_line_give_points(new_b,new_m,point_array)
         mean_of_item = numpy.mean(price_array)
         std_div_price = numpy.std(price_array)
-        return ("The new b {0}, the new m {1}, the error {2} this is for {3}\n"
+        client_message = ("The new b {0}, the new m {1}, the error {2} this is for {3}\n"
                 "The mean of the {3} is {5}\n"
                 "Standard Deviations for {3} is {4} for the price".format(new_b,new_m,error,search_item,std_div_price,mean_of_item))
+
+        # Sends to RabitMQ, incase client loses connection or long process
+        rabbit_send.send_to("ConEng",client_message)
+
+        return client_message
     except:
         error_logging("ConEngine", "Error in runtest")
 
