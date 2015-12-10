@@ -10,8 +10,9 @@ try:
     client = make_service_client('http://localhost:8080/ebay',EbayServ())
     name = raw_input("Enter username: ")
     password = raw_input("Enter password: ")
-    search = raw_input("What do you want to find ?")
-    intensity = int(raw_input("How many pages would you like ot search"))
+    search = raw_input("What do you want to find ? ")
+    intensity = int(raw_input("How many pages would you like ot search? "))
+    day_to_use = raw_input("What would you like to estimate the price for? ")
 
     # Try to connect to client and get json token
     json = client.service_login(name, "H464Jd$",search)
@@ -26,7 +27,7 @@ try:
     if service_type == 1:
         # Has permissions for ebay, will do the ebay call here
         print "User has permissions"
-        result = client.prediction(search,intensity)
+        result = client.prediction(search,intensity,day_to_use)
         print result
         try:
             rabbit_receive.callback('FirstQ')
