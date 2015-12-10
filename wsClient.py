@@ -3,6 +3,7 @@ import getpass
 import jwt
 from soaplib.client import make_service_client
 from webService import EbayServ
+import rabbit_receive
 
 #client
 try:
@@ -23,6 +24,7 @@ try:
         print "User has permissions"
         result = client.prediction("Xbox One")
         print result
+        rabbit_receive.callback('FirstQ')
     else:
          # User does not have permission
          print "User does not have permission"
