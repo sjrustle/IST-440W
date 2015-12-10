@@ -117,7 +117,7 @@ def runtest (search_item):
                 "Standard Deviations for {3} is {4} for the price".format(new_b,new_m,error,search_item,std_div_price,mean_of_item))
 
         # Sends to RabitMQ, incase client loses connection or long process
-        rabbit_send.send_to("ConEng",client_message)
+        rabbit_send.send_to(client_message)
 
         return client_message
     except:
