@@ -27,17 +27,6 @@ try:
         print "User has permissions"
         result = client.prediction(search,intensity,day_to_use)
         print result
-        see_rabbitMq = str(raw_input("Do you want to see the queue "))
-        if see_rabbitMq == 'yes':
-            i = 0
-            try:
-               for i in range(1,5):
-                print rabbit_receive.consuming_start()
-                i = i + 1
-                if i == 4:
-                    break
-            except:
-                print "RabbitMQ failed"
     else:
          # User does not have permission
          print "User does not have permission"

@@ -13,18 +13,16 @@ print('[*] Waiting for messages. To exit press CTRL+C')
 def callback(ch, method, properties, body):
     # Set up the textfile
     try:
-        note = " [x] Received %r" % (body,)
-        return note
+        print " [x] Received %r" % (body,)
     except:
          error_logging("Rabbit Receive", "Error creating body")
 
-def consuming_start():
-    try:
-        channel.basic_consume(callback,
-                              queue='FirstQ',
-                              no_ack=True)
-        channel.start_consuming()
-        audit_logging("Rabbit Receive", "Able to consume")
-    except:
-        error_logging("Rabbit Receive", "Error starting consume")
+try:
+    channel.basic_consume(callback,
+                          queue='FirstQ',
+                          no_ack=True)
+    channel.start_consuming()
+    audit_logging("Rabbit Receive", "Able to consume")
+except:
+    error_logging("Rabbit Receive", "Error starting consume")
 
