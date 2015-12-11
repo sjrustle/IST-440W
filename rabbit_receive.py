@@ -21,14 +21,16 @@ def callback(ch, method, properties, body):
     except:
          error_logging("Rabbit Receive", "Error creating body")
 
+def start_consuming()
+    try:
+        channel.basic_consume(callback,
+                              queue='FirstQ',
+                              no_ack=True)
 
-try:
-    channel.basic_consume(callback,
-                          queue='FirstQ',
-                          no_ack=True)
-    audit_logging("Rabbit Receive", "Was able to receive")
-except:
-    error_logging("Rabbit Receive", "Error consuming")
+        error_logging("Rabbit Receive", "Error consuming")
+        channel.start_consuming()
+        
+        audit_logging("Rabbit Recieve", "Able to consume")
+    except:
+        error_logging("Rabbit Recieve", "Error starting consume")
 
-def start_consuming():
-    channel.start_consuming()
