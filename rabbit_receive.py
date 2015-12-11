@@ -20,4 +20,9 @@ try:
 except:
     error_logging("Rabbit Receive", "Error running CallBack")
 
-channel.start_consuming()
+def start_consume():
+    try:
+        channel.start_consuming()
+        audit_logging("Rabbit Recieve", "started consume")
+    except:
+        error_logging("Rabbit Receive", "Error running CallBack")

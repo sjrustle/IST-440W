@@ -26,7 +26,7 @@ try:
         result = client.prediction(search,intensity,day_to_use)
         print result
         try:
-            runpy.run_module(rabbit_receive)
+            rabbit_receive.start_consume()
         except:
             print "runpy error"
     else:
