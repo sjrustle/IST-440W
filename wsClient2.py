@@ -30,7 +30,7 @@ try:
         print "User has permissions"
         result = client.prediction(search,intensity,day_to_use)
         print result
-        see_rabbitMq = raw_input("Do you want to see the queue ")
+        see_rabbitMq = str(raw_input("Do you want to see the queue "))
         if see_rabbitMq == 'yes':
             try:
                rabbit_receive.audit_logging()
