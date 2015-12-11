@@ -13,15 +13,12 @@ print('[*] Waiting for messages. To exit press CTRL+C')
 def callback(ch, method, properties, body):
     # Set up the textfile
     try:
-        file_body = body.split()
-        _file = open("RabbitMq", "w")
-        _file.write(file_body)
-        _file.close()
-        return body
+        note = " [x] Received %r" % (body,)
+        return note
     except:
          error_logging("Rabbit Receive", "Error creating body")
 
-def start_consuming():
+def consuming_start():
     try:
         channel.basic_consume(callback,
                               queue='FirstQ',
@@ -30,7 +27,7 @@ def start_consuming():
         error_logging("Rabbit Receive", "Error consuming")
         channel.start_consuming()
 
-        audit_logging("Rabbit Recieve", "Able to consume")
+        audit_logging("Rabbit Receive", "Able to consume")
     except:
-        error_logging("Rabbit Recieve", "Error starting consume")
+        error_logging("Rabbit Receive", "Error starting consume")
 
