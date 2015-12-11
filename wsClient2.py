@@ -32,7 +32,7 @@ try:
             i = 0
             try:
                for i in range(1,5):
-                rabbit_receive.consuming_start()
+                print rabbit_receive.consuming_start()
                 i = i + 1
                 if i == 4:
                     break
