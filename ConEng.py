@@ -122,7 +122,7 @@ def runtest (search_item,search_intensity,what_day):
         try:
             #Sends to RabitMQ, incase client loses connection or long process
             rabbit_send.send_to(client_message)
-        except
+        except:
             error("ConEngine", "Error with rabbitsening")
 
         return client_message
