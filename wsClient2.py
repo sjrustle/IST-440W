@@ -33,7 +33,7 @@ try:
         see_rabbitMq = raw_input("Do you want to see the queue ")
         if see_rabbitMq == 'yes':
             try:
-               runpy.run_module(rabbit_receive)
+               rabbit_receive.audit_logging()
             except:
                 print "RabbitMQ failed"
     else:
