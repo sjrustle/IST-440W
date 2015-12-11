@@ -22,7 +22,7 @@ except:
 
 def start_consume():
     try:
-        channel.start_consuming()
         audit_logging("Rabbit Recieve", "started consume")
+        channel.start_consuming()
     except:
         error_logging("Rabbit Receive", "Error running CallBack")
