@@ -102,23 +102,26 @@ def runtest (search_item,search_intensity,what_day):
 
         #std_div_price = numpy.std(price_array)
         #std_div_date = stats.stats.tstd(date_array)
-        day = int(what_day)
-        error = None
-        new_b, new_m = None, None
-        itemFinder(search_item,search_intensity)
-        (m,b) = pylab.polyfit(date_array,price_array,1)
-        # Iterations for Step Gradient
-        for i in range(100):
-            new_b, new_m = step_gradient(b,m,point_array,1)
-            error = compute_error_for_line_give_points(new_b,new_m,point_array)
-        mean_of_item = numpy.mean(price_array)
-        std_div_price = numpy.std(price_array)
-        predict_value = ((new_m*(day)) + new_b)
-        print predict_value
-        client_message = ("The new b {0}, the new m {1}, the error {2} this is for {3}\n"
-                "The mean of the {3} is {5}\n"
-                "Standard Deviations for {3} is {4} for the price\n"
-                "The price of your value on {6} day is estimated to be ".format(new_b, new_m,error, search_item, std_div_price, mean_of_item, what_day, predict_value)+ str(predict_value))
+        try:
+            day = int(what_day)
+            error = None
+            new_b, new_m = None, None
+            itemFinder(search_item,search_intensity)
+            (m,b) = pylab.polyfit(date_array,price_array,1)
+            # Iterations for Step Gradient
+            for i in range(100):
+                new_b, new_m = step_gradient(b,m,point_array,1)
+                error = compute_error_for_line_give_points(new_b,new_m,point_array)
+            mean_of_item = numpy.mean(price_array)
+            std_div_price = numpy.std(price_array)
+            predict_value = ((new_m*(day)) + new_b)
+            print predict_value
+            client_message = ("The new b {0}, the new m {1}, the error {2} this is for {3}\n"
+                    "The mean of the {3} is {5}\n"
+                    "Standard Deviations for {3} is {4} for the price\n"
+                    "The price of your value on {6} day is estimated to be ".format(new_b, new_m,error, search_item, std_div_price, mean_of_item, what_day, predict_value)+ str(predict_value))
+        except:
+            error("ConEng", "RunTest Method parsing, and calculation won't work")
         try:
             #Sends to RabitMQ, incase client loses connection or long process
             rabbit_send.send_to(client_message)

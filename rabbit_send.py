@@ -9,6 +9,7 @@ try:
     channel = connection.channel()
 
     channel.queue_declare(queue='FirstQ')
+    audit_logging("Rabbit Send", "Connected to Queue")
 except:
     error_logging("RabbitSend","Couldn't Create connection")
 
