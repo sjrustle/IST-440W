@@ -6,7 +6,7 @@ from scipy import stats
 import numpy
 import pylab
 import math
-#import rabbit_send
+import rabbit_send
 
 # Global variables
 price_array = []
