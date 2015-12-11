@@ -20,10 +20,7 @@ try:
     print json
     # Json sent back, with permissions decode
     decode = jwt.decode(json,'secret', algorithm='HS256')
-    print decode
-    print type(decode)
     service_type = decode.get('user_service')
-    print service_type
 
     if service_type == 1:
         # Has permissions for ebay, will do the ebay call here
@@ -33,7 +30,7 @@ try:
         see_rabbitMq = str(raw_input("Do you want to see the queue "))
         if see_rabbitMq == 'yes':
             try:
-               rabbit_receive.audit_logging()
+               rabbit_receive.start_consuming()
             except:
                 print "RabbitMQ failed"
     else:
