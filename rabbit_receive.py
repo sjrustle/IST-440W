@@ -30,4 +30,5 @@ try:
 except:
     error_logging("Rabbit Receive", "Error consuming")
 
-channel.start_consuming()
+def start_consuming():
+    channel.start_consuming()

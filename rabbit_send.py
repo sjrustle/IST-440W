@@ -9,6 +9,8 @@ try:
     channel = connection.channel()
 
     channel.queue_declare(queue='FirstQ')
+
+    # Logs
     audit_logging("Rabbit Send", "Connected to Queue")
 except:
     error_logging("RabbitSend","Couldn't Create connection")
@@ -18,9 +20,11 @@ def send_to(Message):
         channel.basic_publish(exchange='',
                       routing_key="FirstQ",
                       body=str(Message))
+        #Logs process
         audit_logging("RabbitSend","Sent to queue")
         connection.close()
     except:
+        # Logs Process
         error_logging("RabbitSend","Couldn't Send")
 
 

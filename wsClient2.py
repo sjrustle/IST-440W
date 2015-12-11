@@ -30,11 +30,12 @@ try:
         print "User has permissions"
         result = client.prediction(search,intensity,day_to_use)
         print result
-        try:
-           runpy.run_module(rabbit_receive)
-        except:
-            print "RabbitMQ failed"
-
+        see_rabbitMq = raw_input("Do you want to see the queue ")
+        if see_rabbitMq == 'yes':
+            try:
+               runpy.run_module(rabbit_receive)
+            except:
+                print "RabbitMQ failed"
     else:
          # User does not have permission
          print "User does not have permission"
