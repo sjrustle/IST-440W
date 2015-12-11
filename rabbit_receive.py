@@ -21,7 +21,7 @@ def callback(ch, method, properties, body):
     except:
          error_logging("Rabbit Receive", "Error creating body")
 
-def start_consuming()
+def start_consuming():
     try:
         channel.basic_consume(callback,
                               queue='FirstQ',
@@ -29,7 +29,7 @@ def start_consuming()
 
         error_logging("Rabbit Receive", "Error consuming")
         channel.start_consuming()
-        
+
         audit_logging("Rabbit Recieve", "Able to consume")
     except:
         error_logging("Rabbit Recieve", "Error starting consume")
