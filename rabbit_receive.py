@@ -23,10 +23,7 @@ def consuming_start():
         channel.basic_consume(callback,
                               queue='FirstQ',
                               no_ack=True)
-
-        error_logging("Rabbit Receive", "Error consuming")
         channel.start_consuming()
-
         audit_logging("Rabbit Receive", "Able to consume")
     except:
         error_logging("Rabbit Receive", "Error starting consume")
