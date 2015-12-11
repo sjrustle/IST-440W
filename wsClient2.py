@@ -17,16 +17,18 @@ try:
 
     # Try to connect to client and get json token
     json = client.service_login(name, "H464Jd$",search)
-    print json
     # Json sent back, with permissions decode
     decode = jwt.decode(json,'secret', algorithm='HS256')
     service_type = decode.get('user_service')
 
     if service_type == 1:
         # Has permissions for ebay, will do the ebay call here
-        print "User has permissions"
         result = client.prediction(search,intensity,day_to_use)
         print result
+        try:
+            runpy.run_module(rabbit_receive)
+        except:
+            print "runpy error"
     else:
          # User does not have permission
          print "User does not have permission"
