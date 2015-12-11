@@ -4,6 +4,7 @@ import jwt
 from soaplib.client import make_service_client
 from webService import EbayServ
 import rabbit_receive
+import runpy
 
 #client
 try:
@@ -30,7 +31,7 @@ try:
         result = client.prediction(search,intensity,day_to_use)
         print result
         try:
-            rabbit_receive.callback('FirstQ')
+           runpy.run_module(rabbit_receive)
         except:
             print "RabbitMQ failed"
 
