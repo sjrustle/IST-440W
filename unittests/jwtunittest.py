@@ -4,7 +4,7 @@ import CRUD
 
 # Shows system path
 import sys
-sys.path.append('/home/sjr5249/MyRepo/IST-440W')
+sys.path.append('../')
 
 class JsonTokenUnitTest(unittest):
 
@@ -16,5 +16,5 @@ class JsonTokenUnitTest(unittest):
     #     jwt = Create_Token.return_jwt()
 
 
-a = JsonTokenUnitTest.test_con_create_json()
-print a
+if __name__ == '__main__':
+    unittest.main()
