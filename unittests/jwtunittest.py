@@ -5,7 +5,7 @@ sys.path.append('..')
 import Create_Token
 import CRUD
 
-class JsonTokenUnitTest(unittest.TestCase):
+class TestJsonTokenUnit(unittest.TestCase):
 
     def test_con_create_json(self):
         con = Create_Token.create_connection()
@@ -16,6 +16,4 @@ class JsonTokenUnitTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    test_instance = JsonTokenUnitTest()
-    a = test_instance.test_con_create_json()
-    print a
+    unittest.main(exit = False)
