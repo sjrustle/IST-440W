@@ -2,6 +2,10 @@ import Create_Token
 import unittest
 import CRUD
 
+# Shows system path
+import sys
+sys.path.append('/home/sjr5249/MyRepo/IST-440W')
+
 class JsonTokenUnitTest(unittest):
 
     def test_con_create_json(self):
