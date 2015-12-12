@@ -10,7 +10,8 @@ class TestKerbAuthCheck(unittest.TestCase):
         self.assertEqual(con,None)
 
     def test_error_compute(self):
-        compute = ConEng.compute_error_for_line_give_points(1,1)
+        points = [{1,2},{2,3}]
+        compute = ConEng.compute_error_for_line_give_points(1,1, points)
         self.assertTrue(compute)
 
     def test_step_grad(self):
