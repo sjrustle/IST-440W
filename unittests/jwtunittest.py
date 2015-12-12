@@ -1,11 +1,12 @@
 import Create_Token
 import unittest
+import CRUD
 
 class JsonTokenUnitTest(unittest):
 
-    def con_create_json(self):
+    def test_con_create_json(self):
         con = Create_Token.create_connection()
-        self.assertEqual(con,)
+        self.assertTrue(con)
 
-    def json_ticket_return_test(self):
-        jwt = Create_Token.return_jwt()
+    # def test_json_ticket_return(self):
+    #     jwt = Create_Token.return_jwt()
