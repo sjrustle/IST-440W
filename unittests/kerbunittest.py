@@ -11,5 +11,9 @@ class TestKerbAuthCheck(unittest.TestCase):
         ticket = Kerb_Auth_Check.does_ticket_exist('bkt5031')
         self.assertTrue(ticket)
 
+    def test_auth_kinit(self):
+        auth = Kerb_Auth_Check.auth_kinit('bkt5031','H464Jd$')
+        self.assertTrue(auth)
+
 if __name__ == '__main__':
     unittest.main(exit = False)
