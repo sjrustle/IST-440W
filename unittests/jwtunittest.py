@@ -1,8 +1,8 @@
 # Shows system path
+import unittest
 import sys
 sys.path.append('..')
 import Create_Token
-import unittest
 import CRUD
 
 class JsonTokenUnitTest(unittest):
