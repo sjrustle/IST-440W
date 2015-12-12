@@ -11,7 +11,7 @@ class TestJsonTokenUnit(unittest.TestCase):
         con = Create_Token.create_connection()
         self.assertTrue(con)
 
-    def tet_json_ticket_return(self):
+    def test_json_ticket_return(self):
         jwt = Create_Token.return_jwt("bkt5031")
         self.assertTrue(jwt)
 
