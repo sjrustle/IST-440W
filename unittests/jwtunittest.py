@@ -14,3 +14,7 @@ class JsonTokenUnitTest(unittest):
 
     # def test_json_ticket_return(self):
     #     jwt = Create_Token.return_jwt()
+
+
+a = JsonTokenUnitTest.test_con_create_json()
+print a
