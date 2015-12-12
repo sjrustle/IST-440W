@@ -1,10 +1,9 @@
+# Shows system path
+import sys
+sys.path.append('..')
 import Create_Token
 import unittest
 import CRUD
-
-# Shows system path
-import sys
-sys.path.append('../')
 
 class JsonTokenUnitTest(unittest):
 
