@@ -16,4 +16,6 @@ class JsonTokenUnitTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    JsonTokenUnitTest.test_con_create_json()
+    test_instance = JsonTokenUnitTest()
+    a = test_instance.test_con_create_json()
+    print a
