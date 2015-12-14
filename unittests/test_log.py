@@ -3,11 +3,13 @@ import unittest
 import sys
 sys.path.append('..')
 import wsLogging
+import logging
 
 class TestKerbAuthCheck(unittest.TestCase):
     def test_logger_create(self):
+        logger = logging.getLogger('Tests')
         log = wsLogging.logger_create("UnitTest")
-        self.assertFalse(log, None)
+        self.assertTrue(log)
 
     def test_error_logging_create(self):
         log = wsLogging.error_logging("UnitTest","Something")
