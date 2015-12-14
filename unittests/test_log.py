@@ -7,7 +7,7 @@ import wsLogging
 class TestKerbAuthCheck(unittest.TestCase):
     def test_logger_create(self):
         log = wsLogging.logger_create("UnitTest")
-        self.assertEqual(log, None)
+        self.assertFalse(log, None)
 
     def test_error_logging_create(self):
         log = wsLogging.error_logging("UnitTest","Something")
