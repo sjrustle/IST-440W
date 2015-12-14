@@ -25,10 +25,12 @@ try:
         # Has permissions for ebay, will do the ebay call here
         result = client.prediction(search,intensity,day_to_use)
         print result
-        try:
-            rabbit_receive.start_consume()
-        except:
-            print "runpy error"
+        get_rabbit_mq = raw_input()
+        if get_rabbit_mq == 'yes':
+            try:
+                rabbit_receive.start_consume()
+            except:
+                print "runpy error"
     else:
          # User does not have permission
          print "User does not have permission"
